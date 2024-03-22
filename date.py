@@ -1,10 +1,10 @@
-import datetime
+from datetime import datetime
 
 def get_date(prompt):
     while True:
         date_str = input(prompt)
         try:
-            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            date = datetime.strptime(date_str, "%Y-%m-%d")
             return date
         except ValueError:
             print("Invalid date format. Please use YYYY-MM-DD.")
@@ -18,6 +18,5 @@ def main():
         print("End date cannot be before start date.")
         end_date = get_date("Enter the end date (YYYY-MM-DD): ")
 
-    print("Start date:", start_date)
-    print("End date:", end_date)
+    return start_date, end_date
 
