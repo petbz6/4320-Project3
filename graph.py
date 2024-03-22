@@ -2,9 +2,14 @@ def generate_graph(data, type, time_series, begin, end):
     import pygal
     from datetime import datetime
     
-
-    stock_data = data["Time Series (5min)"]
-
+    if time_series == 1:
+        stock_data = data["Time Series (5min)"]
+    elif time_series == 2:
+        stock_data = data["Time Series (Daily)"]
+    elif time_series == 3:
+        stock_data = data["Weekly Time Series"]
+    else:
+        stock_data = data["Monthly Time Series"]
 
     filtered_data = {time: price for time, price in stock_data.items() 
                      if begin <= datetime.strptime(time, "%Y-%m-%d %H:%M:%S") <= end}
